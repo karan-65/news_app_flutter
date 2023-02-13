@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:news_app_flutter/view/detail_view.dart';
 
 class newsContainer extends StatelessWidget {
   String imgurl;
@@ -27,10 +28,18 @@ class newsContainer extends StatelessWidget {
           fit: BoxFit.cover,
         ),
         Text(newsheading),
-        Text(newscontent),
+        Text(newscontent.toString().substring(0, newscontent.length - 15)),
         Text(newdescription),
         Spacer(),
-        ElevatedButton(onPressed: () {}, child: Text("Read More")),
+        ElevatedButton(
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          DetailViewScreen(newsurl: newsurl)));
+            },
+            child: Text("Read More")),
       ]),
     );
   }
