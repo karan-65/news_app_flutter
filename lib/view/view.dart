@@ -28,6 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(title: Text("News app")),
       body: PageView.builder(
           controller: PageController(initialPage: 0),
           scrollDirection: Axis.vertical,

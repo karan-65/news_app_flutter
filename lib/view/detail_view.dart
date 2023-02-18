@@ -12,11 +12,23 @@ class DetailViewScreen extends StatefulWidget {
 }
 
 class _DetailViewScreenState extends State<DetailViewScreen> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    setState(() {
+      widget.newsurl = widget.newsurl.contains("http:")
+          ? widget.newsurl.replaceAll("http:", "https:")
+          : widget.newsurl;
+    });
+  }
+
   final Completer<WebViewController> controller =
       Completer<WebViewController>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(title: Text("News App")),
       body: WebView(
         initialUrl: widget.newsurl,
         javascriptMode: JavascriptMode.unrestricted,
